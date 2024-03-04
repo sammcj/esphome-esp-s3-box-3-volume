@@ -22,11 +22,11 @@ api:
   services:
     - service: set_speaker_volume
       variables:
-        level: float
+        volume: float
       then:
         - output.set_level:
             id: speaker_volume
-            level: !lambda 'return level;'
+            level: !lambda 'return volume;'
 ```
 
 For the moment I've copied my fork of https://github.com/jesserockz/esp32-s3-box-3-board/tree/main/esp32_s3_box_3 into esp32_s3_box_3, this is not ideal and I will look to change this once my PR is merged upstream.
