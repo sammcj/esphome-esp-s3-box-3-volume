@@ -10,7 +10,7 @@ ESPBoxVolume = esp_box_volume_ns.class_('ESPBoxVolume', cg.Component)
 
 # add the service to the namespace
 set_volume = esp_box_volume_ns.service('set_volume')
-set_volume_level = set_volume.template(cg.float)
+set_volume_level = set_volume.template('set_volume_level', cg.uint8)
 
 # Add the service to the class
 ESPBoxVolume.add(set_volume_level)
