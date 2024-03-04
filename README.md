@@ -26,7 +26,9 @@ api:
       then:
         - output.set_level:
             id: speaker_volume
-            level: !lambda 'return volume;'
+            level: |-
+              auto volume_component = id(speaker_volume);
+              volume_component->set_volume(volume);
 ```
 
 For the moment I've copied my fork of https://github.com/jesserockz/esp32-s3-box-3-board/tree/main/esp32_s3_box_3 into esp32_s3_box_3, this is not ideal and I will look to change this once my PR is merged upstream.

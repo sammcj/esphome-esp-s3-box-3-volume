@@ -39,3 +39,5 @@ def to_code(config):
 
     # Add the service to the class
     cg.add(set_volume_level.set_callback(var.set_volume_level_callback))
+
+    yield cg.register_service(set_volume_level, var)
