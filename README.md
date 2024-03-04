@@ -10,6 +10,7 @@ external_components:
 
 esp_box_volume:
   id: speaker_volume
+  output: speaker
 
 on_boot:
   then:
