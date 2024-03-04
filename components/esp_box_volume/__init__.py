@@ -10,7 +10,6 @@ ESPBoxVolume = esp_box_volume_ns.class_('ESPBoxVolume', cg.Component)
 FloatOutput = esp_box_volume_ns.class_('FloatOutput', output.FloatOutput)
 
 # add the speaker output
-cg.add_type(FloatOutput)
 output.register_output(FloatOutput, 'FloatOutput', 1)
 
 # add the service to the namespace
