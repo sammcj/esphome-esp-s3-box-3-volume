@@ -1,6 +1,6 @@
 #include "esp_box_volume.h"
 #include "esphome/core/log.h"
-#include "../esp32_s3_box_3/board.h" // Adjust this include as necessary
+#include "../esp32_s3_box_3/board.h"
 
 namespace esphome
 {
@@ -24,6 +24,30 @@ namespace esphome
       {
         ESP_LOGE(TAG, "Failed to set volume, error: %d", result);
       }
+
+      // update the state of the output
+      this->publish_state(volume);
+
+      // update the state of the service
+      if (this->volume_service_)
+      {
+        this->volume_service_->publish_state(volume);
+      }
+    }
+
+    void ESPBoxVolume::set_volume_service(ESPBoxVolumeService *volume_service)
+    {
+      this->volume_service_ = volume_service;
+    }
+
+    void ESPBoxVolumeService::set_volume(float volume)
+    {
+      static_cast<ESPBoxVolume *>(this->parent())->set_volume(volume);
+    }
+
+    void ESPBoxVolumeOutput::write_state(float state)
+    {
+      this->set_volume(state);
     }
 
   } // namespace esp_box_volume
