@@ -1,12 +1,18 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
+from esphome.components import output
 from esphome.const import CONF_ID
-from esphome.core import CORE
 
-esp_box_volume_ns = cg.esphome_ns.namespace('esp_box_volume')
-EspBoxVolume = esp_box_volume_ns.class_('EspBoxVolume', cg.Component)
+DEPENDENCIES = ['output']
 
-CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(EspBoxVolume),
-    cv.Optional('set_volume', default=85): cv.All(cv.int_range(min=0, max=100), cv.Coerce(int)),
-}).extend(cv.COMPONENT_SCHEMA)
+esp_box_ns = cg.esphome_ns.namespace('esp_box')
+ESPBoxVolume = esp_box_ns.class_('ESPBoxVolume', output.FloatOutput, cg.Component)
+
+CONFIG_SCHEMA = output.FLOAT_OUTPUT_SCHEMA.extend({
+    cv.GenerateID(): cv.declare_id(ESPBoxVolume),
+})
+
+def to_code(config):
+    var = cg.new_Pvariable(config[CONF_ID])
+    yield output.register_output(var, config)
+    yield cg.register_component(var, config)
