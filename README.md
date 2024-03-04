@@ -8,13 +8,14 @@ external_components:
     components: [esp_box_volume]
     refresh: always
 
-output:
-  - platform: esp_box_volume
-    id: my_volume_control
+esp_box_volume:
+  id: speaker_volume
 
 on_boot:
   then:
     - output.set_level:
-        id: my_volume_control
+        id: speaker_volume
         level: 0.85  # 85% volume
 ```
+
+For the moment I've copied my fork of https://github.com/jesserockz/esp32-s3-box-3-board/tree/main/esp32_s3_box_3 into esp32_s3_box_3, this is not ideal and I will look to change this once my PR is merged upstream.
