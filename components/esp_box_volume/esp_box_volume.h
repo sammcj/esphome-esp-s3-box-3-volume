@@ -1,17 +1,16 @@
 #pragma once
 
 #include "esphome/core/component.h"
-#include "esphome/components/output/float_output.h"
 
 namespace esphome
 {
   namespace esp_box_volume
   {
 
-    class ESPBoxVolume : public Component, public output::FloatOutput
+    class ESPBoxVolume : public Component
     {
     public:
-      void write_state(float state) override;
+      void set_volume(float volume);
     };
 
   } // namespace esp_box_volume
