@@ -8,5 +8,5 @@ EspBoxVolume = esp_box_volume_ns.class_('EspBoxVolume', cg.Component)
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(EspBoxVolume),
-    cv.Optional('volume', default=85): cv.All(cv.int_range(min=0, max=100), cv.Coerce(int)),
+    cv.Optional('set_volume', default=85): cv.All(cv.int_range(min=0, max=100), cv.Coerce(int)),
 }).extend(cv.COMPONENT_SCHEMA)

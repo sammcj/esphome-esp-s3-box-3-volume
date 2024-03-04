@@ -10,5 +10,5 @@ external_components:
     refresh: 0s
 
 esp_box_volume:
-  volume: 85  # Set desired volume level here
+  set_volume: 85  # Set desired volume level here
 ```
