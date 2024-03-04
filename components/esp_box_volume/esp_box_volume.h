@@ -32,5 +32,12 @@ namespace esphome
       void write_state(float state) override { this->set_volume(state); }
     };
 
+    // define the output
+    class ESPBoxVolumeOutput : public output::FloatOutput, public ESPBoxVolume
+    {
+    public:
+      void write_state(float state) override { this->set_volume(state); }
+    };
+
   } // namespace esp_box_volume
 } // namespace esphome
