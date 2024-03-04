@@ -5,7 +5,7 @@
 
 namespace esphome
 {
-  namespace esp_box
+  namespace esp_box_volume
   {
 
     class ESPBoxVolume : public Component, public output::FloatOutput
@@ -14,5 +14,5 @@ namespace esphome
       void write_state(float state) override;
     };
 
-  } // namespace esp_box
+  } // namespace esp_box_volume
 } // namespace esphome

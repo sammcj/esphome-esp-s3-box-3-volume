@@ -5,23 +5,16 @@
 ```yaml
 external_components:
   - source: github://sammcj/esphome-esp-s3-box-3-volume@main
-    components:
-      - esp_box_volume
-    refresh: 0s
+    components: [esp_box_volume]
+    refresh: always
 
 output:
-  - platform: custom
-    type: float
-    lambda: |-
-      auto esp_box_volume = new esp_box::ESPBoxVolume();
-      App.register_component(esp_box_volume);
-      return {esp_box_volume};
-    outputs:
-      id: esp_box_volume_output
+  - platform: esp_box_volume
+    id: my_volume_control
 
 on_boot:
   then:
     - output.set_level:
-        id: esp_box_volume_output
+        id: my_volume_control
         level: 0.85  # 85% volume
 ```
