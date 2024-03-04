@@ -3,12 +3,11 @@ import esphome.config_validation as cv
 from esphome.components import output
 from esphome.const import CONF_ID
 
-# Correct namespace matching your C++ namespace
 esp_box_volume_ns = cg.esphome_ns.namespace('esp_box_volume')
-# Declaration of your class within the namespace
+
 ESPBoxVolume = esp_box_volume_ns.class_('ESPBoxVolume', cg.Component)
 
-output.FloatOutput = esp_box_volume_ns.class_('FloatOutput', output.FloatOutput)
+FloatOutput = esp_box_volume_ns.class_('FloatOutput', output.FloatOutput)
 
 # add the service to the namespace
 set_volume = esp_box_volume_ns.service('set_volume')
