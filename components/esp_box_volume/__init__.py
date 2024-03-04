@@ -19,6 +19,9 @@ set_volume_level = set_volume.template('set_level', cg.uint8)
 # Add the service to the class
 ESPBoxVolume.add(set_volume_level)
 
+# add the output to the component
+ESPBoxVolume.add(FloatOutput)
+
 # Add the service to the component
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(ESPBoxVolume),
