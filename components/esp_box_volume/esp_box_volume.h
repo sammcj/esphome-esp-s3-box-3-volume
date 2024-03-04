@@ -14,11 +14,11 @@ namespace esphome
     };
 
     // expose a service for home assistant to use
-    class ESPBoxVolumeService : public Service
-    {
-    public:
-      void set_volume(float volume) { static_cast<ESPBoxVolume *>(this->parent())->set_volume(volume); }
-    };
+    // class ESPBoxVolumeService : public Service
+    // {
+    // public:
+    //   void set_volume(float volume) { static_cast<ESPBoxVolume *>(this->parent())->set_volume(volume); }
+    // };
 
   } // namespace esp_box_volume
 } // namespace esphome
