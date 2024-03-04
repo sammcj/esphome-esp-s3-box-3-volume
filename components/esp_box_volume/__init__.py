@@ -31,8 +31,10 @@ def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     yield cg.register_component(var, config)
 
-    cg.add(var.set_volume_level.set_service(set_volume_level))
-    yield output.register_output(var, config)
+    var.set_volume_level = cg.new_Pvariable(set_volume_level, var)
+    yield cg.register_service(set_volume_level, var)
+
+
 
     # Add the service to the component
     cg.add(set_volume_level.set_component(var))
