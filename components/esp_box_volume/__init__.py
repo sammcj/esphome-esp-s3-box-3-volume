@@ -8,6 +8,14 @@ esp_box_volume_ns = cg.esphome_ns.namespace('esp_box_volume')
 # Declaration of your class within the namespace
 ESPBoxVolume = esp_box_volume_ns.class_('ESPBoxVolume', cg.Component)
 
+output.FloatOutput = esp_box_volume_ns.class_('FloatOutput', output.FloatOutput)
+
+# Add the service to the class
+set_volume_level_callback = cg.Callback()
+set_volume_level = cg.Publisher()
+ESPBoxVolume.add(set_volume_level_callback)
+ESPBoxVolume.add(set_volume_level)
+
 # add the service to the namespace
 set_volume = esp_box_volume_ns.service('set_volume')
 set_volume_level = set_volume.template('set_volume_level', cg.uint8)
