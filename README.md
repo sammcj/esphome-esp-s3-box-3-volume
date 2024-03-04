@@ -13,9 +13,8 @@ esp_box_volume:
 
 on_boot:
   then:
-    - output.set_level:
-        id: speaker_volume
-        level: 0.85  # 85% volume
+    - lambda: |-
+        id(speaker_volume).set_volume(0.85);
 
 # optional service that can be called to set the volume, this is useful if you want to control the volume from Home Assistant
 api:
@@ -24,11 +23,8 @@ api:
       variables:
         volume: float
       then:
-        - output.set_level:
-            id: speaker_volume
-            level: |-
-              auto volume_component = id(speaker_volume);
-              volume_component->set_volume(volume);
+        - lambda: |-
+            id(speaker_volume).set_volume(volume);
 ```
 
 For the moment I've copied my fork of https://github.com/jesserockz/esp32-s3-box-3-board/tree/main/esp32_s3_box_3 into esp32_s3_box_3, this is not ideal and I will look to change this once my PR is merged upstream.
