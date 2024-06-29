@@ -19,3 +19,5 @@ on_boot:
 ```
 
 For the moment I've copied my fork of https://github.com/jesserockz/esp32-s3-box-3-board/tree/main/esp32_s3_box_3 into esp32_s3_box_3, this is not ideal and I will look to change this once my PR is merged upstream.
+
+My esp s3 box 3 config files are here if it helps: https://github.com/sammcj/esphome-esp-s3-box-3
